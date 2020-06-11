@@ -7,11 +7,11 @@ import {
 	TransformNode as _TransformNode,
 	vec3,
 } from '@downpourdigital/boxes';
-import { TraversableProps } from '@downpourdigital/boxes/dist/lib/Traversable';
 
 import mountNode from './mountNode';
 import TraversableChildren from './TraversableChildren';
 import createInstance from './createInstance';
+import { applyTraversableProps, TraversableProps } from './Traversable';
 
 
 export interface TransformNodeProps extends TraversableProps {
@@ -27,20 +27,6 @@ export function applyTransformNodeProps(
 	node: _TransformNode,
 	props: Partial<TransformNodeProps>,
 ): void {
-	// TRAVERSABLE PROPS
-	if ( props.visible !== node.visible ) {
-		if ( props.visible ) {
-			node.unhide();
-		} else {
-			node.hide();
-		}
-	}
-	if ( props.maskOnly !== node.maskOnly ) {
-		node.maskOnly = props.maskOnly;
-		node.invalidateSceneGraph(); // TODO: this should be handled by boxes
-	}
-	if ( props.onBeforeRender ) node.onBeforeRender = props.onBeforeRender;
-
 	// TRANSFORMNODE PROPS
 	if ( props.onBeforeTransform ) node.onBeforeTransform = props.onBeforeTransform;
 	if ( props.origin ) vec3.copy( node.origin, props.origin );
@@ -58,6 +44,7 @@ const TransformNode: ForwardRefExoticComponent<TransformNodeProps> = forwardRef(
 		() => new _TransformNode(),
 	);
 
+	applyTraversableProps( transformNode, props );
 	applyTransformNodeProps( transformNode, props );
 	mountNode( transformNode );
 

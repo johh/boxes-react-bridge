@@ -10,6 +10,7 @@ import { TransformNodeProps, applyTransformNodeProps } from './TransformNode';
 import mountNode from './mountNode';
 import TraversableChildren from './TraversableChildren';
 import createInstance from './createInstance';
+import { applyTraversableProps } from './Traversable';
 
 
 interface RenderableProps extends _RenderableProps, TransformNodeProps {}
@@ -53,6 +54,7 @@ const Renderable: ForwardRefExoticComponent<RenderableProps> = forwardRef( (
 		}),
 	);
 
+	applyTraversableProps( renderable, props );
 	applyTransformNodeProps( renderable, props );
 	applyRenderableProps( renderable, props );
 	mountNode( renderable );
