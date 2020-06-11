@@ -1,8 +1,6 @@
 /* eslint-disable no-param-reassign */
 import React, {
-	useMemo,
 	forwardRef,
-	useImperativeHandle,
 	ForwardRefExoticComponent,
 } from 'react';
 import {
@@ -13,6 +11,7 @@ import { TraversableProps } from '@downpourdigital/boxes/dist/lib/Traversable';
 
 import mountNode from './mountNode';
 import TraversableChildren from './TraversableChildren';
+import createInstance from './createInstance';
 
 
 export interface TransformNodeProps extends TraversableProps {
@@ -54,8 +53,10 @@ export function applyTransformNodeProps(
 const TransformNode: ForwardRefExoticComponent<TransformNodeProps> = forwardRef( (
 	{ children, ...props }, ref,
 ) => {
-	const transformNode = useMemo( () => new _TransformNode(), []);
-	useImperativeHandle( ref, () => transformNode, [transformNode]);
+	const transformNode = createInstance(
+		ref,
+		() => new _TransformNode(),
+	);
 
 	applyTransformNodeProps( transformNode, props );
 	mountNode( transformNode );

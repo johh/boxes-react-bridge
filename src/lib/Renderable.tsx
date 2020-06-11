@@ -2,8 +2,6 @@
 import React, {
 	forwardRef,
 	ForwardRefExoticComponent,
-	useMemo,
-	useImperativeHandle,
 } from 'react';
 
 import { Renderable as _Renderable } from '@downpourdigital/boxes';
@@ -11,6 +9,7 @@ import { RenderableProps as _RenderableProps } from '@downpourdigital/boxes/dist
 import { TransformNodeProps, applyTransformNodeProps } from './TransformNode';
 import mountNode from './mountNode';
 import TraversableChildren from './TraversableChildren';
+import createInstance from './createInstance';
 
 
 interface RenderableProps extends _RenderableProps, TransformNodeProps {}
@@ -46,11 +45,13 @@ export function applyRenderableProps(
 const Renderable: ForwardRefExoticComponent<RenderableProps> = forwardRef( (
 	{ children, ...props }, ref,
 ) => {
-	const renderable = useMemo( () => new _Renderable({
-		geometry: props.geometry,
-		material: props.material,
-	}), []);
-	useImperativeHandle( ref, () => renderable, [renderable]);
+	const renderable = createInstance(
+		ref,
+		() => new _Renderable({
+			geometry: props.geometry,
+			material: props.material,
+		}),
+	);
 
 	applyTransformNodeProps( renderable, props );
 	applyRenderableProps( renderable, props );
