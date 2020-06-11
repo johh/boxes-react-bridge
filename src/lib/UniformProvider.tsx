@@ -2,6 +2,7 @@
 import React, {
 	ForwardRefExoticComponent,
 	forwardRef,
+	MutableRefObject,
 } from 'react';
 import { UniformProvider as _UniformProvider } from '@downpourdigital/boxes';
 import {
@@ -14,7 +15,9 @@ import TraversableChildren from './TraversableChildren';
 import mountNode from './mountNode';
 
 
-interface UniformProviderProps extends _UniformProviderProps, TraversableProps {}
+interface UniformProviderProps extends _UniformProviderProps, TraversableProps {
+	ref?: MutableRefObject<_UniformProvider>;
+}
 
 
 export function applyUniformProviderProps(

@@ -2,6 +2,7 @@
 import React, {
 	forwardRef,
 	ForwardRefExoticComponent,
+	MutableRefObject,
 } from 'react';
 import {
 	TransformNode as _TransformNode,
@@ -20,6 +21,7 @@ export interface TransformNodeProps extends TraversableProps {
 	translation?: [number, number, number];
 	scale?: [number, number, number];
 	rotation?: [number, number, number];
+	ref?: MutableRefObject<_TransformNode>;
 }
 
 
