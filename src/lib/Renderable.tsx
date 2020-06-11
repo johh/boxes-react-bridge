@@ -56,7 +56,7 @@ const Renderable: ForwardRefExoticComponent<RenderableProps> = forwardRef( (
 	applyRenderableProps( renderable, props );
 	mountNode( renderable );
 
-	return (
+	return children && (
 		<TraversableChildren parent={renderable}>
 			{children}
 		</TraversableChildren>
