@@ -45,6 +45,11 @@
   dependencies:
     gl-matrix "^3.1.0"
 
+"@downpourdigital/scheduler@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@downpourdigital/scheduler/-/scheduler-0.0.10.tgz#36cc84616684c7d8ea4eb67a5ea333c859a81b4b"
+  integrity sha512-Yt0v5a4uhtFU/AvdSZoFk00gOf01m/P8vddjfaVDELWJWVfBOUFW3X8F+YUT9uLylH/ynZE8vekl9e3EhVv6aw==
+
 "@rollup/pluginutils@^3.0.8":
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-3.0.8.tgz#4e94d128d94b90699e517ef045422960d18c8fde"
