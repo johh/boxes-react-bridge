@@ -31,7 +31,7 @@ const PerspectiveWrapper: FunctionComponent<PerspectiveWrapperProps> = ({
 		camera.translation[2]
 	), [camera]);
 	const viewMatrix = useMemo( () => mat4.create(), []);
-	const value = useMemo( () => ({ viewMatrix, pxPerUnit }), [camera]);
+	const value = useMemo( () => ({ viewMatrix, pxPerUnit }), [pxPerUnit]);
 
 	useLoop( () => {
 		mat4.copy( viewMatrix, camera.viewMatrix );
