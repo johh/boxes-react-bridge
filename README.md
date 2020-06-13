@@ -18,6 +18,7 @@ import {
 	BoxesRoot,
 	Renderable,
 	TransformNode,
+	UniformProvider,
 	PerspectiveWrapper,
 	MatchGlTransform,
 } from '@downpourdigital/boxes-react-bridge';
@@ -43,11 +44,11 @@ ReactDOM.render(
 );
 
 ```
-All `boxes` related nodes inside `<BoxesRoot>` will now be mounted into `scene`.
+All boxes related nodes inside `<BoxesRoot>` will now be mounted into `scene`.
 
 ### Nodes
 
-For now, only `Renderable` and `TransformNode` are represented. The node's props closely match their imperative counterparts. Additionally react `ref` props can be used and transforms can be supplied as arrays. 
+For now, only `Renderable`, `TransformNode` and `UniformProvider ` are represented. The elements props closely match that of their imperative counterpart. Additionally, react `ref` props can be used and transforms can be supplied as arrays. 
 
 ```tsx
 () => {
@@ -65,7 +66,7 @@ For now, only `Renderable` and `TransformNode` are represented. The node's props
 ```
 
 ### Transform matching for DOM Elements
-`boxes-react-bridge` can convert boxes transforms to CSS transforms to sync DOM content to WebGL. Right now, only `PerspectiveCameras` are supported.
+`boxes-react-bridge` can infer CSS transforms from boxes transforms to sync DOM content to WebGL. Right now, only `PerspectiveCameras` are supported.
 
 To get the correct CSS perspective, wrap your App in a `<PerspectiveWrapper>` component. This'll create a `<div>` with the necessary styles.
 
@@ -88,7 +89,7 @@ ReactDOM.render(
 );
 
 ```
-Now you can place a `<MatchGlTransform>` component inside the node with which you want to sync the transforms. This'll place a `<div>` **at the origin** of the node. You may have to fight with CSS for a bit to get things looking right.
+Now you can place a `<MatchGlTransform>` component inside the element with which you want to sync transforms. This'll place a `<div>` **at the nodes origin**. You may have to fight with CSS for a bit to get things looking right.
 
 ```tsx
 <Renderable
