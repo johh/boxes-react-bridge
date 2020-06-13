@@ -5,3 +5,4 @@ export { default as UniformProvider } from './lib/UniformProvider';
 
 export { default as PerspectiveWrapper } from './lib/PerspectiveWrapper';
 export { default as MatchGlTransform } from './lib/MatchGlTransform';
+export { default as usePxPerUnit } from './lib/usePxPerUnit';
