@@ -21,6 +21,7 @@ import {
 	UniformProvider,
 	PerspectiveWrapper,
 	MatchGlTransform,
+	usePxPerUnit,
 } from '@downpourdigital/boxes-react-bridge';
 
 ```
@@ -91,23 +92,33 @@ ReactDOM.render(
 ```
 Now you can place a `<MatchGlTransform>` component inside the element with which you want to sync transforms. This'll place a `<div>` **at the nodes origin**. You may have to fight with CSS for a bit to get things looking right.
 
+Use the `usePxPerUnit` hook to convert from boxes units to pixels.
+
+A 2x2u square on top of a `Renderable` would look like this:
+
 ```tsx
-<Renderable
-	geometry={geometry}
-	material={material}
->
-	<MatchGlTransform>
-		<div style={{
-			transform: 'translate3d(-50%, 50%, 0)',
-			border: '1px solid red',
-			width: '10vh',
-			height: '10vh',
-		}}
+() => {
+	const scalar = usePxPerUnit();
+	
+	return (
+		<Renderable
+			geometry={geometry}
+			material={material}
 		>
-			SYNCED TRANSFORMS!
-		</div>
-	</MatchGlTransform>
-</Renderable>
+			<MatchGlTransform>
+				<div style={{
+					transform: 'translate3d(-50%, 50%, 0)',
+					border: '1px solid red',
+					width: 2 * scalar,
+					height: 2 * scalar,
+				}}
+				>
+					SYNCED TRANSFORMS!
+				</div>
+			</MatchGlTransform>
+		</Renderable>
+	);
+}
 
 ```
 
