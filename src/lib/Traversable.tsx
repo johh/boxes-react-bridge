@@ -1,14 +1,15 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable import/prefer-default-export */
+import { ReactNode } from 'react';
 import Traversable, {
 	TraversableProps as _TraversableProps,
 } from '@downpourdigital/boxes/dist/lib/Traversable';
-import { ReactNode } from 'react';
 
 
 export interface TraversableProps extends _TraversableProps {
 	children?: ReactNode;
 }
+
 
 export function applyTraversableProps( node: Traversable, props: TraversableProps ): void {
 	if ( typeof props.visible !== 'undefined' && props.visible !== node.visible ) {

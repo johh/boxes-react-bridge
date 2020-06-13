@@ -4,9 +4,9 @@ import React, {
 	ForwardRefExoticComponent,
 	MutableRefObject,
 } from 'react';
-
 import { Renderable as _Renderable } from '@downpourdigital/boxes';
 import { RenderableProps as _RenderableProps } from '@downpourdigital/boxes/dist/lib/Renderable';
+
 import { TransformNodeProps, applyTransformNodeProps } from './TransformNode';
 import mountNode from './mountNode';
 import TraversableChildren from './TraversableChildren';
@@ -34,7 +34,7 @@ export function applyRenderableProps(
 		node.material = props.material;
 	}
 	if ( props.mask !== node.mask ) {
-		// TODO: this should be done by boxes
+		// TODO: this should be handled by boxes
 		node.mask = props.mask;
 		node.invalidateSceneGraph();
 	}
@@ -45,6 +45,7 @@ export function applyRenderableProps(
 	node.renderOrder = props.renderOrder ?? node.renderOrder;
 	if ( props.blending ) node.blending = props.blending;
 }
+
 
 const Renderable: ForwardRefExoticComponent<RenderableProps> = forwardRef( (
 	{ children, ...props }, ref,

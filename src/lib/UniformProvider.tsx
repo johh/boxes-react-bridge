@@ -27,6 +27,7 @@ export function applyUniformProviderProps(
 	node.uniforms = props.uniforms;
 }
 
+
 const UniformProvider: ForwardRefExoticComponent<UniformProviderProps> = forwardRef( (
 	{ children, ...props }, ref,
 ) => {

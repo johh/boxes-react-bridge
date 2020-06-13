@@ -3,6 +3,7 @@ import Traversable from '@downpourdigital/boxes/dist/lib/Traversable';
 
 import TraversableContext from './TraversableContext';
 
+
 export default function mountNode( node: Traversable ): void {
 	const ctx = useContext( TraversableContext );
 

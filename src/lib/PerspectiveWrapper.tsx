@@ -13,6 +13,7 @@ interface PerspectiveWrapperProps {
 	camera: PerspectiveCamera;
 }
 
+
 const PerspectiveWrapper: FunctionComponent<PerspectiveWrapperProps> = ({
 	width,
 	height,
