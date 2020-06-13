@@ -26,7 +26,7 @@ const PerspectiveWrapper: FunctionComponent<PerspectiveWrapperProps> = ({
 			* 2
 			* camera.translation[2]
 		)
-	), [camera]);
+	), [camera, height]);
 	const perspective = useMemo( () => (
 		camera.translation[2]
 	), [camera]);
