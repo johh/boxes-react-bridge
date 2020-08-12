@@ -2,7 +2,7 @@
 import React, {
 	forwardRef,
 	ForwardRefExoticComponent,
-	MutableRefObject,
+	Ref,
 } from 'react';
 import { Renderable as _Renderable } from '@downpourdigital/boxes';
 import { RenderableProps as _RenderableProps } from '@downpourdigital/boxes/dist/lib/Renderable';
@@ -15,7 +15,9 @@ import { applyTraversableProps } from './Traversable';
 
 
 interface RenderableProps extends _RenderableProps, TransformNodeProps {
-	ref?: MutableRefObject<_Renderable>;
+	ref?: Ref<_Renderable>;
+	onBeforeTransform?: ( ref: _Renderable ) => void;
+	onBeforeRender?: ( ref: _Renderable ) => void;
 }
 
 
