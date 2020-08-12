@@ -1,7 +1,7 @@
 import React, {
 	FunctionComponent, useContext, useRef,
 } from 'react';
-import { mat4, Renderable } from '@downpourdigital/boxes';
+import { mat4, TransformNode } from '@downpourdigital/boxes';
 
 import PerspectiveContext from './PerspectiveContext';
 import useLoop from './useLoop';
@@ -17,8 +17,10 @@ const MatchGlTransform: FunctionComponent = ({ children }) => {
 	const ref = useRef<HTMLDivElement>();
 
 	useLoop( () => {
-		if ( ( parent as Renderable ).isRenderable ) {
-			mat4.mul( mat, viewMatrix, ( parent as Renderable ).worldMatrix );
+		if ( !parent.visible ) {
+			ref.current.style.visibility = 'hidden';
+		} else if ( ( parent as TransformNode ).isTransformNode ) {
+			mat4.mul( mat, viewMatrix, ( parent as TransformNode ).worldMatrix );
 
 			// flip y axis
 			mat[1] = -mat[1];
@@ -29,6 +31,7 @@ const MatchGlTransform: FunctionComponent = ({ children }) => {
 			mat[13] *= -pxPerUnit;
 			mat[14] *= pxPerUnit;
 
+			ref.current.style.visibility = 'visible';
 			ref.current.style.transform = `matrix3d(${
 				mat.join( ',' )
 			})`;
