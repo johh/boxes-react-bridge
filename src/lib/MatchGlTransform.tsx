@@ -2,6 +2,7 @@ import React, {
 	FunctionComponent, useContext, useRef,
 } from 'react';
 import { mat4, TransformNode } from '@downpourdigital/boxes';
+import Traversable from '@downpourdigital/boxes/dist/lib/Traversable';
 
 import PerspectiveContext from './PerspectiveContext';
 import useLoop from './useLoop';
@@ -11,13 +12,20 @@ import TraversableContext from './TraversableContext';
 const mat = mat4.create();
 
 
+const checkVisibilityRecursive = ( node: Traversable ): boolean => {
+	if ( !node.visible ) return false;
+	if ( node.parent ) return checkVisibilityRecursive( node.parent );
+	return true;
+};
+
+
 const MatchGlTransform: FunctionComponent = ({ children }) => {
 	const { viewMatrix, pxPerUnit } = useContext( PerspectiveContext );
 	const { parent } = useContext( TraversableContext );
 	const ref = useRef<HTMLDivElement>();
 
 	useLoop( () => {
-		if ( !parent.visible ) {
+		if ( !checkVisibilityRecursive( parent ) ) {
 			ref.current.style.visibility = 'hidden';
 		} else if ( ( parent as TransformNode ).isTransformNode ) {
 			mat4.mul( mat, viewMatrix, ( parent as TransformNode ).worldMatrix );
