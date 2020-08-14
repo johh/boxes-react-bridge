@@ -56,6 +56,7 @@ const MatchGlTransform: FunctionComponent = ({ children }) => {
 				transform: 'scale(0)',
 				maxWidth: 0,
 				maxHeight: 0,
+				willChange: 'transform, visibility',
 			}}
 		>
 			<div
