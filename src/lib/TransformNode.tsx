@@ -15,8 +15,8 @@ import createInstance from './createInstance';
 import { applyTraversableProps, TraversableProps } from './Traversable';
 
 
-export interface TransformNodeProps extends TraversableProps {
-	onBeforeTransform?: ( ref: _TransformNode ) => void;
+export interface TransformNodeProps<T> extends TraversableProps<T> {
+	onBeforeTransform?: ( ref: T ) => void;
 	origin?: [number, number, number];
 	translation?: [number, number, number];
 	scale?: [number, number, number];
@@ -27,7 +27,7 @@ export interface TransformNodeProps extends TraversableProps {
 
 export function applyTransformNodeProps(
 	node: _TransformNode,
-	props: Partial<TransformNodeProps>,
+	props: Partial<TransformNodeProps<_TransformNode>>,
 ): void {
 	// TRANSFORMNODE PROPS
 	if ( props.onBeforeTransform ) node.onBeforeTransform = props.onBeforeTransform;
@@ -38,7 +38,7 @@ export function applyTransformNodeProps(
 }
 
 
-const TransformNode: ForwardRefExoticComponent<TransformNodeProps> = forwardRef( (
+const TransformNode: ForwardRefExoticComponent<TransformNodeProps<_TransformNode>> = forwardRef( (
 	{ children, ...props }, ref,
 ) => {
 	const transformNode = createInstance(

@@ -3,15 +3,17 @@
 import { ReactNode } from 'react';
 import Traversable, {
 	TraversableProps as _TraversableProps,
-} from '@downpourdigital/boxes/dist/lib/Traversable';
+} from '@downpourdigital/boxes/dist/cjs/lib/Traversable';
 
 
-export interface TraversableProps extends _TraversableProps {
+export interface TraversableProps<T> extends _TraversableProps<T> {
 	children?: ReactNode;
 }
 
 
-export function applyTraversableProps( node: Traversable, props: TraversableProps ): void {
+export function applyTraversableProps(
+	node: Traversable, props: TraversableProps<Traversable>,
+): void {
 	if ( typeof props.visible !== 'undefined' && props.visible !== node.visible ) {
 		if ( props.visible ) {
 			node.unhide();

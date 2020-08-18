@@ -2,7 +2,7 @@ import React, {
 	FunctionComponent, useContext, useRef,
 } from 'react';
 import { mat4, TransformNode } from '@downpourdigital/boxes';
-import Traversable from '@downpourdigital/boxes/dist/lib/Traversable';
+import Traversable from '@downpourdigital/boxes/dist/cjs/lib/Traversable';
 
 import PerspectiveContext from './PerspectiveContext';
 import useLoop from './useLoop';

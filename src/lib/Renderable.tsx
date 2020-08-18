@@ -5,7 +5,9 @@ import React, {
 	Ref,
 } from 'react';
 import { Renderable as _Renderable } from '@downpourdigital/boxes';
-import { RenderableProps as _RenderableProps } from '@downpourdigital/boxes/dist/lib/Renderable';
+import {
+	RenderableProps as _RenderableProps,
+} from '@downpourdigital/boxes/dist/cjs/lib/Renderable';
 
 import { TransformNodeProps, applyTransformNodeProps } from './TransformNode';
 import mountNode from './mountNode';
@@ -14,10 +16,8 @@ import createInstance from './createInstance';
 import { applyTraversableProps } from './Traversable';
 
 
-interface RenderableProps extends _RenderableProps, TransformNodeProps {
+interface RenderableProps extends _RenderableProps, TransformNodeProps<_Renderable> {
 	ref?: Ref<_Renderable>;
-	onBeforeTransform?: ( ref: _Renderable ) => void;
-	onBeforeRender?: ( ref: _Renderable ) => void;
 }
 
 

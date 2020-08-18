@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import Traversable from '@downpourdigital/boxes/dist/lib/Traversable';
+import Traversable from '@downpourdigital/boxes/dist/cjs/lib/Traversable';
 
 import TraversableContext from './TraversableContext';
 
