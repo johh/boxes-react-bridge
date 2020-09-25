@@ -38,18 +38,18 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@downpourdigital/boxes@^0.4.1":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@downpourdigital/boxes/-/boxes-0.4.1.tgz#382bf9e9d2d92f831bfcb84d031e6f0efa5cf0a7"
-  integrity sha512-YfsktXzZyLD71pGVxBQijlPdQJvaySM4UEoHuFgPaHtnFlZ8nfe9OtJAAbVjRRL1bG6K1WDqs/YCcJQG7i5Zng==
+"@downpourdigital/boxes@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@downpourdigital/boxes/-/boxes-0.5.0.tgz#89f34ea39af9a2e8d1a56d77cb730a0a7d221903"
+  integrity sha512-eZm+JiChScEMPfEcoH3WeTFCT+cXSxJQThnErQCDZMI6iqRc6DvbhndKA/u0JFIUhaT1XaiJGexXaZkbG4G8+w==
   dependencies:
-    "@downpourdigital/scheduler" "^0.0.10"
+    "@downpourdigital/scheduler" "1.x.x"
     gl-matrix "^3.1.0"
 
-"@downpourdigital/scheduler@^0.0.10":
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/@downpourdigital/scheduler/-/scheduler-0.0.10.tgz#36cc84616684c7d8ea4eb67a5ea333c859a81b4b"
-  integrity sha512-Yt0v5a4uhtFU/AvdSZoFk00gOf01m/P8vddjfaVDELWJWVfBOUFW3X8F+YUT9uLylH/ynZE8vekl9e3EhVv6aw==
+"@downpourdigital/scheduler@1.x.x", "@downpourdigital/scheduler@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@downpourdigital/scheduler/-/scheduler-1.0.0.tgz#e06b306a1df7e03c9aeaf3ba987fec95b13e65c7"
+  integrity sha512-52SER8RsnMGpt6EeMNlmFD9hVCDN8Scfag0Rnv9xbomAqL201cmXDd16oYEQn8buGku1ng0Yqz7pYZTpvQrsaw==
 
 "@rollup/pluginutils@^3.1.0":
   version "3.1.0"

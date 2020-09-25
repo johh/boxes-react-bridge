@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
-import scheduler from '@downpourdigital/scheduler';
+import { loop } from '@downpourdigital/scheduler';
+import { LoopTask } from '@downpourdigital/scheduler/dist/cjs/lib/Scheduler';
 
 
 export default function useLoop(
-	func: ( delta?: number, time?: number ) => void, priority?: number,
+	func: LoopTask,
 ): void {
 	useEffect( () => {
-		const loop = scheduler.schedule( func, priority );
+		const unschedule = loop( func );
 
-		return (): void => { loop.unschedule(); };
+		return (): void => unschedule();
 	});
 }
