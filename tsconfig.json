@@ -20,6 +20,7 @@
 		"plugins": []
 	},
 	"include": [
-		"./src/**/*"
+		"./src/**/*",
+		"./*.config.js",
 	]
 }

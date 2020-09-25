@@ -1,20 +1,47 @@
 import typescript from 'rollup-plugin-typescript2';
+import propertiesRenameTransformer from 'ts-transformer-properties-rename';
+import { terser } from 'rollup-plugin-terser';
+
 
 export default {
-	input: './src/index.ts',
+	input: './src/bridge.ts',
 
 	output: [
 		{
-			file: 'dist/esm/index.js',
+			file: 'dist/esm/bridge.js',
 			format: 'esm',
 		},
 		{
-			file: 'dist/cjs/index.js',
+			file: 'dist/cjs/bridge.js',
 			format: 'cjs',
 		},
 	],
 
 	plugins: [
-		typescript(),
+		terser({
+			format: {
+				comments: false,
+			},
+			mangle: {
+				properties: {
+					regex: /^_private_/,
+				},
+			},
+		}),
+		typescript({
+			transformers: [( service ) => ({
+				before: [
+					propertiesRenameTransformer(
+						service.getProgram(),
+						{
+							privatePrefix: '_private_',
+							internalPrefix: '',
+							entrySourceFiles: ['./src/bridge.ts'],
+						},
+					),
+				],
+				after: [],
+			})],
+		}),
 	],
 };
