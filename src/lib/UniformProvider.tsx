@@ -42,11 +42,15 @@ const UniformProvider: ForwardRefExoticComponent<UniformProviderProps> = forward
 	applyUniformProviderProps( uniformProvider, props );
 	mountNode( uniformProvider );
 
-	return children && (
-		<TraversableChildren parent={uniformProvider}>
-			{children}
-		</TraversableChildren>
-	);
+
+	if ( children ) {
+		return (
+			<TraversableChildren parent={uniformProvider}>
+				{children}
+			</TraversableChildren>
+		);
+	}
+	return null;
 });
 
 export default UniformProvider;

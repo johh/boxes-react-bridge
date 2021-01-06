@@ -50,11 +50,14 @@ const TransformNode: ForwardRefExoticComponent<TransformNodeProps<_TransformNode
 	applyTransformNodeProps( transformNode, props );
 	mountNode( transformNode );
 
-	return children && (
-		<TraversableChildren parent={transformNode}>
-			{children}
-		</TraversableChildren>
-	);
+	if ( children ) {
+		return (
+			<TraversableChildren parent={transformNode}>
+				{children}
+			</TraversableChildren>
+		);
+	}
+	return null;
 });
 
 export default TransformNode;

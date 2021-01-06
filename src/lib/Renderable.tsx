@@ -65,11 +65,14 @@ const Renderable: ForwardRefExoticComponent<RenderableProps> = forwardRef( (
 	applyRenderableProps( renderable, props );
 	mountNode( renderable );
 
-	return children && (
-		<TraversableChildren parent={renderable}>
-			{children}
-		</TraversableChildren>
-	);
+	if ( children ) {
+		return (
+			<TraversableChildren parent={renderable}>
+				{children}
+			</TraversableChildren>
+		);
+	}
+	return null;
 });
 
 export default Renderable;
