@@ -38,10 +38,10 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@downpourdigital/boxes@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@downpourdigital/boxes/-/boxes-0.6.0.tgz#69434b00222c5ba9cc610582543ea341e2bee48d"
-  integrity sha512-/NEplqj+y5yQ+YziK14w6f9C1vBiCYRIie452a3ZGtHbrtGAdaD5EDWdexhhzztjpxRLdKzL1DiWTHyUG7zXcg==
+"@downpourdigital/boxes@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@downpourdigital/boxes/-/boxes-0.7.0.tgz#d7811cd01bddcf3ce65833cced5f3fa1b0ab018a"
+  integrity sha512-TM8JS9iLTGR+RVyLtaXtlERwND1MlhFEr6WO1PhworVORYazXiD82N0n7ofghqC5PqsxXUmi6TJBNKtG2aaRJg==
   dependencies:
     "@downpourdigital/scheduler" "1.x.x"
     gl-matrix "^3.1.0"
