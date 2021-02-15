@@ -31,12 +31,14 @@ const MatchGlTransform: FunctionComponent = ({ children }) => {
 			mat4.mul( mat, viewMatrix, ( parent as TransformNode ).worldMatrix );
 
 			// flip y axis
-			mat[1] = -mat[1];
-			mat[5] = -mat[5];
+			mat[1] *= -1;
+			mat[4] *= -1;
+			mat[6] *= -1;
+			mat[7] *= -1;
 
 			// adjust scale
 			mat[12] *= pxPerUnit;
-			mat[13] *= -pxPerUnit;
+			mat[13] *= pxPerUnit;
 			mat[14] *= pxPerUnit;
 
 			ref.current.style.visibility = 'visible';
@@ -59,13 +61,7 @@ const MatchGlTransform: FunctionComponent = ({ children }) => {
 				willChange: 'transform, visibility',
 			}}
 		>
-			<div
-				style={{
-					transform: 'scale(1,-1)',
-				}}
-			>
-				{ children }
-			</div>
+			{ children }
 		</div>
 	);
 };
