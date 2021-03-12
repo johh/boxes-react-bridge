@@ -38,7 +38,7 @@ const MatchGlTransform: FunctionComponent = ({ children }) => {
 
 			// adjust scale
 			mat[12] *= pxPerUnit;
-			mat[13] *= pxPerUnit;
+			mat[13] *= -pxPerUnit;
 			mat[14] *= pxPerUnit;
 
 			ref.current.style.visibility = 'visible';
